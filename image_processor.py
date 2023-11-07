@@ -5,12 +5,12 @@ import os
 # Function for converting the image format
 def img_convert(img, out_file):
     try:
-        if not img.format == 'PNG':
-            img.save(out_file, 'PNG')
-            print(f"Image converted and saved as {out_file} in PNG format")
-        elif not img.format == 'JPEG':
+        if img.format == 'PNG':
             img.save(out_file, 'JPEG')
             print(f"Image converted and saved as {out_file} in JPEG format")
+        elif img.format == 'JPEG':
+            img.save(out_file, 'PNG')
+            print(f"Image converted and saved as {out_file} in PNG format")
         return out_file
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -66,7 +66,7 @@ def img_thumbnail(img, out_file, size):
 
 # Function to generate the output path for the processed image
 def get_output_path(name, action):
-    out_folder = './output_folder'
+    out_folder = './output_folder/'
     out_name = f'{name}_{action}'
     output_path = os.path.join(out_folder, out_name)
     
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     valid_image_paths = []
 
     # Set the folder path where the images are located
-    in_folder = './input_folder'
+    in_folder = './input_folder/'
 
     #check if image exists in library and if it does not remove it from the list and tell the user that the images we will perform the action on are these and failed to open the other images 
     for arg in args:
