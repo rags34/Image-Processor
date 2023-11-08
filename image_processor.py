@@ -55,10 +55,10 @@ def img_resize(img, out_file):
         print(f"An error occurred: {e}")
 
 # Function for creating a thumbnail of the image
-def img_thumbnail(img, out_file, size):
+def img_thumbnail(img, out_file):
     try:
         thumbnail_img = img.copy()
-        thumbnail_img.thumbnail(size)
+        thumbnail_img.thumbnail((128, 128))
         thumbnail_img.save(out_file)
         print(f"Thumbnail image created and saved as {out_file}")
     except Exception as e:
